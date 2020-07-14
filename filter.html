@@ -5,21 +5,62 @@
     <title>Filter Website</title>
     <style>
         canvas {
-            width:auto;
-            height: auto;
+            width:fit-content;
+            height:fit-content;
             outline: black 3px solid;
+            position: relative;
         }
+        p { 
+        font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif; 
+        font-size: 20px; 
+        font-style: italic; 
+        font-variant: normal; 
+        font-weight: 700; 
+        line-height: 14px; 
+        text-align: center;
+        color: rgb(127, 219, 255);
+        }
+        body {
+        background-color: rgb(0, 31, 63);
+        }
+        .h1Text {
+            color: rgb(179, 205, 224);
+            text-align: center;
+        }
+        .Directions {
+            color:bisque;
+            text-align: center;
+        }
+
     </style>
     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
     </script>
     <script>
+        //Global Variable
+        var image;
 
+        function upload() {
+            var imgcanvas = document.getElementById("canvas1");
+            var fileinput = document.getElementById("finput");
+            image = new SimpleImage(fileinput);
+
+            image.drawTo(imgcanvas);
+        }
     </script>
 </head>
 <body>
-    <h1>Filter fun!</h1>
-    <h3>Directions:</h3>
+    <h1 class="h1Text">Filter fun!</h1>
+    <h3 class="Directions">Directions:</h3>
     <p>Upload an image, then click any of the buttons to filter the image!</p>
-    <canvas id="canvas1"></canvas>
+    <div style="text-align: center;">   
+        <canvas id="canvas1"> 
+        </canvas>
+    </div>   
+    
+    <p>
+        <input type="file" multiple="false"
+        accept="image/*" id="finput"
+        onchange="upload()">
+    </p>
 </body>
 </html>
