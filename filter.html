@@ -58,7 +58,33 @@
         image.drawTo(imgcanvas);
         }
         function resetImage() {
-            
+            var imgcanvas = document.getElementById("canvas1");
+            var ctx = imgcanvas.getContext("2d");
+            ctx.clearRect(0,0,5000,2500);
+        }
+        function makeRed() {
+            for (var pixel of image.values()) {
+                pixel.setRed(255);
+            }
+        var imgcanvas = document.getElementById("canvas1");
+        image.drawTo(imgcanvas);
+        }
+        function threeStripe() {
+            var w = image.getWidth();
+            for (var pixel of image.values()) {
+                var x  =  pixel.getX();
+                if (x < w/3) {
+                    pixel.setGreen(255);
+                }
+                else if (x < 2*w/3) {
+                    pixel.setRed(255);
+                }
+                else {
+                    pixel.setBlue(255);
+                }
+            }
+            var imgcanvas = document.getElementById("canvas1");
+            image.drawTo(imgcanvas);
         }
     </script>
 </head>
@@ -79,6 +105,18 @@
     <p>
         <input type="button" value="Make Grayscale"
         onclick="makeGray()">
+    </p>
+    <p>
+        <input type="button" value="Make Red"
+        onclick="makeRed()">
+    </p>
+    <p>
+        <input type="button" value="Make 3 Parts Red, Green, Blue"
+        onclick="threeStripe()">
+    </p>
+    <p>
+        <input type = "button" value = "Clear Canvas"
+        onclick = "resetImage()">
     </p>
     <p>
         Reload Webpage and upload file again to select a different filter!
